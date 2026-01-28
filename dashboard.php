@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>FitCulture|Bag</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+        
+
+    </head>
+    <body>
+        <header>
+            <h2 class="logo">Fit<span>Culture</span></h2>
+            <nav>
+                <input type="text" placeholder="Search">
+                <a href="index.html">Home</a>
+                <a href="collection.html">Collection</a>
+                <a href="index.html">Logout</a>  
+            </nav>
+        </header>
+
+        <div class="sidebar">
+            <a href="#">👤Profile</a>
+            <a href="#">📦Orders</a>
+            <a href="#">⚙Settings</a>
+        </div>
+
+        <section class="dashboard">
+            <h2>DashBoard</h2>
+            <div class="dash-cards">
+                <div class="box"><a href="order.html">📦Orders</a><br><b>2</b></div>
+                <div class="box"><a href="wish.html">❤️Wishlist</a><br><b>3</b></div>
+                <div class="box"><a href="cart.html">🛍️Add cart</a><br><b>2</b></div>
+            </div>
+        </section>
+    </body>
+
+</html>
