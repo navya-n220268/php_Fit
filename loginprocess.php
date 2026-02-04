@@ -1,35 +1,58 @@
 <?php
-session_start(); // ✅ 1. Start session first
+session_start(); 
 
-// Database connection (port 3307)
 $conn = new mysqli("127.0.0.1", "root", "", "userdb", 3307);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get form data
-$email = $_POST['email'];
-$pass = $_POST['password'];
+$email = trim($_POST['email']);
+$pass  = trim($_POST['password']);
 
-// Check user in database
-$sql = "SELECT * FROM users WHERE email='$email' AND pass='$pass'";
+
+$email = strtolower($email);
+
+
+if (strlen($email) < 10) {
+    die("Email must be at least 10 characters long!");
+}
+
+if (strlen($pass) < 6) {
+    die("Password must be at least 6 characters long!");
+}
+
+
+$sql = "SELECT * FROM users WHERE email='$email'";
 $result = $conn->query($sql);
+
+if (!$result) {
+    die("Database Error: " . $conn->error);
+}
 
 if ($result->num_rows > 0) {
 
-    // ✅ 2. Fetch user data
     $row = $result->fetch_assoc();
 
-    // ✅ 3. Store session variables
-    $_SESSION['email'] = $row['email'];
-    $_SESSION['fullname'] = $row['fullname']; // if fullname column exists
+    
+    if (strcmp($row['pass'], $pass) == 0) {
 
-    // ✅ 4. Redirect to profile page
-    header("Location: profile.php");
+       
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['fullname'] = $row['fullname'];
+
+        echo "Login Successful! <br>";
+        print "Welcome " . $row['fullname'];
+
+        header("Location: profile.php");
+        exit();
+
+    } else {
+        die("<h2>Incorrect Password ❌</h2>");
+    }
 
 } else {
-    echo "<h2>Invalid Email or Password ❌</h2>";
+    die("<h2>User not found ❌</h2>");
 }
 
 $conn->close();
