@@ -1,0 +1,4 @@
+Appending line using a+ mode.
+Appending line using a+ mode.
+Appending line using a+ mode.
+Appending line using a+ mode.

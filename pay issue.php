@@ -24,13 +24,14 @@
 
 <section class="issues-container">
 
-    <div class="issue-card">
-        <span>💳</span>
-        <div>
-            <h4>Payment Failed</h4>
-            <p>Money deducted but order not placed</p>
-        </div>
+    <a href="upload_proof.php" class="issue-card upload-card">
+    <span>⬆️</span>
+    <div>
+        <h4>Upload Payment Receipt</h4>
+        <p>Upload UPI screenshot / PDF for verification</p>
     </div>
+</a>
+
 
     <div class="issue-card">
         <span>⏳</span>
