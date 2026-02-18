@@ -319,6 +319,10 @@ body {
     color: gray;
 }
 
+.upload-card {
+    border: 2px solid #ff3f6c;
+}
+
 /* contact support */
 body {
     margin: 0;

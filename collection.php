@@ -12,6 +12,7 @@
 
 <header>
     <h2 class="logo">Fit<span>Culture</span></h2>
+
     <nav>
         <input type="text" placeholder="Search">
         <a href="index.html">Home</a>

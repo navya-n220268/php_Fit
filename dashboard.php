@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,11 +20,16 @@
     <body>
         <header>
             <h2 class="logo">Fit<span>Culture</span></h2>
+
+            <p style="margin-left:20px;">
+                Welcome, <b><?php echo $_SESSION['user']['name'] ?? "User"; ?></b>
+             </p>
+
             <nav>
                 <input type="text" placeholder="Search">
-                <a href="index.html">Home</a>
-                <a href="collection.html">Collection</a>
-                <a href="index.html">Logout</a>  
+                <a href="index.php">Home</a>
+                <a href="collection.php">Collection</a>
+                <a href="OAuth_project/logout.php">Logout</a>  
             </nav>
         </header>
 

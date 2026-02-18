@@ -32,6 +32,11 @@
 
         <button type="submit" class="login-btn">Login</button>
 
+        <div class="oauth-buttons">
+            <a href="OAuth_project/google_login.php" class="login-btn">Login with Google</a><br>
+            <a href="OAuth_project/gh_login.php" class="login-btn">Login with GitHub</a>
+        </div>
+
         <div class="links">
             <a href="forgot.html">Forgot Password?</a>
             <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
