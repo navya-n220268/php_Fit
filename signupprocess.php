@@ -1,11 +1,5 @@
 <?php
-
-$conn = new mysqli("127.0.0.1", "root", "", "userdb", 3307);
-
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once "config/database.php";
 
 
 $fullname = trim($_POST['fullname']);
@@ -14,20 +8,19 @@ $pass     = trim($_POST['password']);
 
 
 $fullname = ucwords(strtolower($fullname));
-
 $email = strtolower($email);
 
 
 if (strlen($fullname) < 6) {
-    die("Full Name must be at least 5 characters long!");
+    die("Full Name must be at least 6 characters long!");
 }
+
 
 if (strlen($email) < 10) {
     die("Email must be at least 10 characters long!");
 }
 
 
-//password
 if (strlen($pass) < 8) {
     die("Password must be at least 8 characters long!");
 }
@@ -61,15 +54,25 @@ if (!$hasSpecial) {
 }
 
 
-$sql = "INSERT INTO users (fullname, email, pass)
-        VALUES ('$fullname', '$email', '$pass')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Signup successful!";
-    print "<br>Welcome, $fullname";
-} else {
-    die("Database Insert Error: " . $conn->error);
+$existingUser = $usersCollection->findOne(["email" => $email]);
+
+if ($existingUser) {
+    die("Email already exists!");
 }
 
-$conn->close();
+
+
+$hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
+
+
+$usersCollection->insertOne([
+    "fullname" => $fullname,
+    "email"    => $email,
+    "password" => $hashedPassword,
+    "created_at" => new MongoDB\BSON\UTCDateTime()
+]);
+
+echo "Signup successful!";
+echo "<br>Welcome, $fullname";
 ?>

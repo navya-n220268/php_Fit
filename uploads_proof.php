@@ -13,7 +13,6 @@ if (isset($_POST["upload"])) {
     $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
     
-
     $newFileName = "Proof_" . time() . "." . $fileType;
     $filePath = $folder . $newFileName;
 

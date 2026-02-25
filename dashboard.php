@@ -3,9 +3,15 @@ session_start();
 
 if(!isset($_SESSION['user'])) {
     header("Location: login.php");
-    exit();
+   exit();
+} // keep this in comments for firebase
+
+
+if(isset($_SESSION["github_user"])) {
+    echo "<h3>GitHub User: " . $_SESSION["github_user"]["login"] . "</h3>";
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

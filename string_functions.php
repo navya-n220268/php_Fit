@@ -37,7 +37,7 @@
 
     echo "<hr>";
 
-    // substr() - Return part of a string
+    // substr() - Return part of a string [substr(string, start, length)]
     echo "Substring: " . substr($str, 7, 9) . "<br>";
 
     // trim() - Remove whitespace from both ends of a string
